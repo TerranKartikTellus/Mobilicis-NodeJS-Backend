@@ -3,12 +3,15 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3030;
 
+require('dotenv').config();
+
 app.listen(PORT, () => {
   console.log('Server listening on port 3000');
 });
 
-
-const uri = "mongodb+srv://terrankartiktellus:qwerty22@cluster0.149afcl.mongodb.net/?retryWrites=true&w=majority";
+const db_user = process.env.DB_USER
+const db_pass = process.env.DB_PASS
+const uri = `mongodb+srv://${db_user}:${db_pass}@cluster0.149afcl.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose.connect(uri, {
   useNewUrlParser: true,
